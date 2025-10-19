@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
 
     <application
         android:allowBackup="true"
@@ -12,10 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Entrega2IOT">
         <activity
+            android:name=".sensores"
+            android:exported="false" />
+        <activity
+            android:name=".principal"
+            android:exported="false" />
+        <activity
             android:name=".SwitchAlert"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".crud_usuario"
             android:exported="false" />
         <activity
             android:name=".Login"
