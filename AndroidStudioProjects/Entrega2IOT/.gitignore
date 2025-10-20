@@ -1,15 +1,21 @@
-*.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-.DS_Store
+# Archivos de Build
 /build
-/captures
-.externalNativeBuild
-.cxx
+/app/build
+
+# Archivos de configuración local
 local.properties
+.gradle
+gradle.properties
+
+# Archivos de IDE (Android Studio / IntelliJ)
+.idea/
+*.iml
+*.hprof
+.cxx/
+
+# Archivos de Google Services
+app/google-services.json
+
+# Capturas de pantalla
+captures/
+

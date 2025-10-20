@@ -24,6 +24,12 @@
             android:exported="false"
             android:theme="@style/Theme.Entrega2IOT" />
         <activity
+            android:name=".desarrolladores"
+            android:exported="false" />
+        <activity
+            android:name=".nuevacontra"
+            android:exported="false" />
+        <activity
             android:name=".sensores"
             android:exported="false" />
         <activity

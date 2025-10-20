@@ -12,6 +12,8 @@ import androidx.core.view.WindowInsetsCompat
 private lateinit var txtcrud: TextView
 private lateinit var txtsensores: TextView
 
+private lateinit var txtdesarrollo: TextView
+
 class principal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,7 @@ class principal : AppCompatActivity() {
 
         txtcrud = findViewById( R.id.txtcrudusuarios)
         txtsensores = findViewById( R.id.txtsensores)
+        txtdesarrollo = findViewById( R.id.txtdesarrollo)
 
         txtcrud.setOnClickListener {
             val intent = Intent(this, crud_usuario::class.java)
@@ -33,6 +36,11 @@ class principal : AppCompatActivity() {
 
         txtsensores.setOnClickListener {
             val intent = Intent(this, sensores::class.java)
+            startActivity(intent)
+        }
+
+        txtdesarrollo.setOnClickListener {
+            val intent = Intent(this, desarrolladores::class.java)
             startActivity(intent)
         }
     }
