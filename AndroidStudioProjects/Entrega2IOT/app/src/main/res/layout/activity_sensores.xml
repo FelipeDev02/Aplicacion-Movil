@@ -78,15 +78,30 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/humedad" />
 
-    <Button
-        android:id="@+id/btn_volver"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="80dp"
-        android:backgroundTint="#FF9800"
-        android:text="Volver"
+    <ImageView
+        android:id="@+id/img_ampolleta"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="60dp"
+        android:contentDescription="Controlar ampolleta"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/img_linterna"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ampolleta_off" />
+
+    <ImageView
+        android:id="@+id/img_linterna"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="40dp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_ampolleta"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_ampolleta"
+        app:layout_constraintTop_toTopOf="@+id/img_ampolleta"
+        app:srcCompat="@drawable/linterna_off"
+        android:contentDescription="Controlar linterna" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

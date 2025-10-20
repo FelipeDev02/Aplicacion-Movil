@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Entrega2IOT">
         <activity
+            android:name=".desarrolladores"
+            android:exported="false" />
+        <activity
             android:name=".nuevacontra"
             android:exported="false" />
         <activity
