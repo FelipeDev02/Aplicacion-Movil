@@ -13,6 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Entrega2IOT">
+
+        <!-- Se añade la declaración de la actividad ModificarUsuario -->
+        <activity
+            android:name=".ModificarUsuario"
+            android:exported="false" />
+
         <activity
             android:name=".nuevaPass"
             android:exported="false" />

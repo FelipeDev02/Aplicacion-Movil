@@ -212,5 +212,15 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- Botón de Volver -->
+        <Button
+            android:id="@+id/btnVolverPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:text="Volver"
+            android:textColor="@android:color/white" />
+
     </LinearLayout>
 </ScrollView>

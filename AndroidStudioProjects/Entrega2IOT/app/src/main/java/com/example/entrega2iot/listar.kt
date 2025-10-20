@@ -1,51 +1,82 @@
 package com.example.entrega2iot
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.ArrayAdapter
-import android.widget.ListView
-import androidx.activity.enableEdgeToEdge
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
-private lateinit var listado: ListView
-private lateinit var listausuario: ArrayList<String>
 class Listar : AppCompatActivity() {
+
+    private lateinit var rvUsuarios: RecyclerView
+    private lateinit var svSearchUsuarios: SearchView
+    private lateinit var btnVolver: Button
+    private lateinit var adapter: UsuarioAdapter
+    private val listaUsuarios = mutableListOf<Usuario>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContentView(R.layout.activity_listar)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
+
+        rvUsuarios = findViewById(R.id.rvUsuarios)
+        svSearchUsuarios = findViewById(R.id.svSearchUsuarios)
+        btnVolver = findViewById(R.id.button2)
+
+        rvUsuarios.layoutManager = LinearLayoutManager(this)
+
+        adapter = UsuarioAdapter(listaUsuarios) { usuario ->
+            val intent = Intent(this, ModificarUsuario::class.java)
+            intent.putExtra("usuario", usuario)
+            startActivity(intent)
         }
-        listado= findViewById(R.id.lista);
-        CargarLista()
-    }
-    private fun listaUsuario(): ArrayList<String> {
-        val datos = ArrayList<String>()
-        val helper = ConexionDbHelper(this)
-        val db = helper.readableDatabase
-        val sql = "SELECT * FROM USUARIOS"
-        val c = db.rawQuery(sql, null)
-        if (c.moveToFirst()) {
-            do {
-                val linea = "${c.getInt(0)} ${c.getString(1)} ${c.getString(2)}"
-                datos.add(linea)
-            } while (c.moveToNext())
+        rvUsuarios.adapter = adapter
+
+        svSearchUsuarios.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
+
+        btnVolver.setOnClickListener {
+            finish()
         }
-        c.close()
-        db.close()
-        return datos
     }
 
-    private fun CargarLista() {
-        listausuario = listaUsuario()
-        val adapter = ArrayAdapter(
-            this, android.R.layout.simple_list_item_1,
-            listausuario
-        )
-        listado.adapter = adapter
+    override fun onResume() {
+        super.onResume()
+        cargarUsuarios()
+    }
+
+    private fun cargarUsuarios() {
+        val helper = ConexionDbHelper(this)
+        val db = helper.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM USUARIOS", null)
+
+        listaUsuarios.clear()
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("ID"))
+                // Se corrige el nombre de las columnas a mayúsculas para que coincida con la BD
+                val nombre = cursor.getString(cursor.getColumnIndexOrThrow("NOMBRE"))
+                val apellido = cursor.getString(cursor.getColumnIndexOrThrow("APELLIDO"))
+                val email = cursor.getString(cursor.getColumnIndexOrThrow("EMAIL"))
+                listaUsuarios.add(Usuario(id, nombre, apellido, email))
+            } while (cursor.moveToNext())
+        }
+
+        cursor.close()
+        db.close()
+        // Se notifica al adapter en el hilo principal para evitar problemas
+        runOnUiThread {
+            adapter.notifyDataSetChanged()
+        }
     }
 }

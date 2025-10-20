@@ -8,87 +8,108 @@
     android:background="@color/beige"
     tools:context=".Registrar">
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="98dp"
-        android:layout_height="153dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/iconoapp" />
-
-    <EditText
-        android:id="@+id/registrarNombres"
+    <Button
+        android:id="@+id/btnRegistrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:ems="10"
-        android:hint="INGRESE NOMBRES"
-        android:inputType="text"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#FF9800"
+        android:text="Registrar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+        app:layout_constraintTop_toBottomOf="@+id/registrarRepetirClave" />
 
     <EditText
-        android:id="@+id/registrarApellidos"
+        android:id="@+id/registrarRepetirClave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="INGRESE APELLIDOS"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrarNombres" />
-
-    <EditText
-        android:id="@+id/registrarEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:ems="10"
-        android:hint="INGRESE E-MAIL"
-        android:inputType="textEmailAddress"
+        android:hint="REPETIR CONTRASEÑA"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrarApellidos" />
+        app:layout_constraintTop_toBottomOf="@+id/registrarClave" />
 
     <EditText
         android:id="@+id/registrarClave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="INGRESE CLAVE"
+        android:hint="CONTRASEÑA"
         android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/registrarEmail" />
 
     <EditText
-        android:id="@+id/registrarRepetirClave"
+        android:id="@+id/registrarEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:hint="REPETIR CLAVE"
-        android:inputType="textPassword"
+        android:hint="EMAIL"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrarClave" />
+        app:layout_constraintTop_toBottomOf="@+id/registrarApellidos" />
+
+    <EditText
+        android:id="@+id/registrarApellidos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="APELLIDOS"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/registrarNombres" />
+
+    <EditText
+        android:id="@+id/registrarNombres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="NOMBRES"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="Registrar Usuario"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="133dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/iconoapp" />
 
     <Button
-        android:id="@+id/btnRegistrar"
+        android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:backgroundTint="#FF9800"
-        android:text="Registrar Ojo Alegre"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="Volver"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/registrarRepetirClave"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/btnRegistrar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

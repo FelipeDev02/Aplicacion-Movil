@@ -12,14 +12,16 @@ import androidx.core.view.WindowInsetsCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 import java.util.regex.Pattern
 
-lateinit var nombre: EditText
-lateinit var apellido: EditText
-lateinit var email: EditText
-lateinit var clave: EditText
-lateinit var claverep: EditText
-lateinit var btn_reg: Button
-
 class Registrar : AppCompatActivity() {
+
+    // Se mueven todas las declaraciones de vistas dentro de la clase y se marcan como privadas
+    private lateinit var nombre: EditText
+    private lateinit var apellido: EditText
+    private lateinit var email: EditText
+    private lateinit var clave: EditText
+    private lateinit var claverep: EditText
+    private lateinit var btn_reg: Button
+    private lateinit var btnVolver: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,12 +32,14 @@ class Registrar : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
         nombre = findViewById(R.id.registrarNombres)
         apellido = findViewById(R.id.registrarApellidos)
         email = findViewById(R.id.registrarEmail)
         clave = findViewById(R.id.registrarClave)
         claverep = findViewById(R.id.registrarRepetirClave)
         btn_reg = findViewById(R.id.btnRegistrar)
+        btnVolver = findViewById(R.id.btnVolver)
 
         btn_reg.setOnClickListener {
             val nombreText = nombre.text.toString().trim()
@@ -45,34 +49,22 @@ class Registrar : AppCompatActivity() {
             val claveRepText = claverep.text.toString().trim()
 
             if (nombreText.isEmpty() || apellidoText.isEmpty() || emailText.isEmpty() || claveText.isEmpty() || claveRepText.isEmpty()) {
-                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Campos obligatorios")
-                    .setContentText("Todos los campos son requeridos.")
-                    .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Campos obligatorios").setContentText("Todos los campos son requeridos.").show()
                 return@setOnClickListener
             }
 
             if (!android.util.Patterns.EMAIL_ADDRESS.matcher(emailText).matches()) {
-                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Formato Inválido")
-                    .setContentText("Por favor, ingrese un email válido.")
-                    .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Formato Inválido").setContentText("Por favor, ingrese un email válido.").show()
                 return@setOnClickListener
             }
 
             if (!validarClave(claveText)) {
-                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Contraseña Débil")
-                    .setContentText("La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.")
-                    .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Contraseña Débil").setContentText("La contraseña debe tener al menos 8 caracteres, 1 mayúscula, 1 minúscula, 1 número y 1 carácter especial.").show()
                 return@setOnClickListener
             }
 
             if (claveText != claveRepText) {
-                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Contraseñas no coinciden")
-                    .setContentText("Las contraseñas ingresadas no son iguales.")
-                    .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Contraseñas no coinciden").setContentText("Las contraseñas ingresadas no son iguales.").show()
                 return@setOnClickListener
             }
 
@@ -82,10 +74,7 @@ class Registrar : AppCompatActivity() {
             try {
                 val cursor = db.rawQuery("SELECT * FROM USUARIOS WHERE EMAIL = ?", arrayOf(emailText))
                 if (cursor.moveToFirst()) {
-                    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                        .setTitleText("Email ya registrado")
-                        .setContentText("La dirección de email ya se encuentra en uso.")
-                        .show()
+                    SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Email ya registrado").setContentText("La dirección de email ya se encuentra en uso.").show()
                     cursor.close()
                     return@setOnClickListener
                 }
@@ -111,13 +100,14 @@ class Registrar : AppCompatActivity() {
                     .show()
 
             } catch (e: Exception) {
-                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE)
-                    .setTitleText("Error de Servidor")
-                    .setContentText("Ocurrió un error al registrar el usuario: ${e.message}")
-                    .show()
+                SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Error de Servidor").setContentText("Ocurrió un error al registrar el usuario: ${e.message}").show()
             } finally {
                 db.close()
             }
+        }
+
+        btnVolver.setOnClickListener {
+            finish()
         }
     }
 
@@ -127,7 +117,7 @@ class Registrar : AppCompatActivity() {
             "(?=.*[0-9])" +
             "(?=.*[a-z])" +
             "(?=.*[A-Z])" +
-            "(?=.*[@#$%^&+=!.?])" +
+            "(?=.*[@#$%^&+=!?.])" +
             "(?=\\S+$)" +
             ".{8,}" +
             "$"

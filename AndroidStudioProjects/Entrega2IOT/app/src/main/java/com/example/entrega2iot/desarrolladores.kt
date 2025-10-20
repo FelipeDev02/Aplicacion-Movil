@@ -17,19 +17,24 @@ class desarrolladores : AppCompatActivity() {
 
         val linkGithubFelipe: TextView = findViewById(R.id.link_github_felipe)
         val linkGithubDito: TextView = findViewById(R.id.link_github_dito)
+        // 1. Se enlaza el nuevo botón
+        val btnVolver: Button = findViewById(R.id.btnVolverPrincipal) 
 
-        // Configurar el listener para el primer desarrollador
         linkGithubFelipe.setOnClickListener {
-            // Reemplaza con la URL real del perfil de GitHub de Nicolas
             val url = "https://github.com/FelipeDev02"
             abrirUrl(url)
         }
 
-        // Configurar el listener para el segundo desarrollador
         linkGithubDito.setOnClickListener {
-            // Reemplaza con la URL real del perfil de GitHub de Alex
             val url = "https://github.com/Ditoplz"
             abrirUrl(url)
+        }
+
+        btnVolver.setOnClickListener {
+            val intent = Intent(this, principal::class.java)
+            // Limpia la pila de actividades para que el usuario no pueda volver atrás
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 

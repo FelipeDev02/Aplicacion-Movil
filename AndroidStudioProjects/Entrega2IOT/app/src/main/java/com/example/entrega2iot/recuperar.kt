@@ -23,6 +23,8 @@ lateinit var codigo3: EditText
 lateinit var codigo4: EditText
 lateinit var codigo5: EditText
 lateinit var timerRecuperar: TextView
+// Se añade la variable para el nuevo botón
+lateinit var btnVolverLogin: Button
 
 class recuperar : AppCompatActivity() {
 
@@ -46,10 +48,13 @@ class recuperar : AppCompatActivity() {
         codigo4 = findViewById(R.id.codigo4)
         codigo5 = findViewById(R.id.codigo5)
         timerRecuperar = findViewById(R.id.timerRecuperar)
+        // Se enlaza el nuevo botón
+        btnVolverLogin = findViewById(R.id.btnVolverLogin)
 
         setupCodigoInput()
 
         btn_recuperar.setOnClickListener {
+            // ... (Lógica existente para recuperar)
             val email = emailRecuperar.text.toString().trim()
             if (email.isEmpty()) {
                 SweetAlertDialog(this, SweetAlertDialog.ERROR_TYPE).setTitleText("Campo obligatorio").setContentText("Por favor, ingrese su email.").show()
@@ -93,6 +98,13 @@ class recuperar : AppCompatActivity() {
             }
             cursor.close()
             db.close()
+        }
+
+        // Se añade la lógica para el botón Volver
+        btnVolverLogin.setOnClickListener {
+            val intent = Intent(this, Login::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 

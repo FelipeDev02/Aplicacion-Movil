@@ -45,20 +45,18 @@
         android:id="@+id/btnRecuperar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="32dp"
         android:backgroundTint="#FF9800"
         android:text="Recuperar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/emailRecuperar" />
 
-    <!-- INICIO: Sección para ingresar el código -->
-
     <TextView
         android:id="@+id/labelCodigo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="48dp"
         android:text="INGRESE CÓDIGO"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -76,21 +74,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/labelCodigo">
 
-        <EditText
-            android:id="@+id/codigo1"
-            style="@style/CodeBox" />
-        <EditText
-            android:id="@+id/codigo2"
-            style="@style/CodeBox" />
-        <EditText
-            android:id="@+id/codigo3"
-            style="@style/CodeBox" />
-        <EditText
-            android:id="@+id/codigo4"
-            style="@style/CodeBox" />
-        <EditText
-            android:id="@+id/codigo5"
-            style="@style/CodeBox" />
+        <EditText android:id="@+id/codigo1" style="@style/CodeBox" />
+        <EditText android:id="@+id/codigo2" style="@style/CodeBox" />
+        <EditText android:id="@+id/codigo3" style="@style/CodeBox" />
+        <EditText android:id="@+id/codigo4" style="@style/CodeBox" />
+        <EditText android:id="@+id/codigo5" style="@style/CodeBox" />
     </LinearLayout>
 
     <TextView
@@ -103,5 +91,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutCodigo" />
+
+    <Button
+        android:id="@+id/btnVolverLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="Volver"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timerRecuperar" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

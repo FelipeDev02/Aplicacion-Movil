@@ -82,13 +82,12 @@
         android:id="@+id/img_ampolleta"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        android:layout_marginBottom="60dp"
         android:contentDescription="Controlar ampolleta"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btnVolverPrincipalSensores"
         app:layout_constraintEnd_toStartOf="@+id/img_linterna"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imagen_hum"
         app:srcCompat="@drawable/ampolleta_off" />
 
     <ImageView
@@ -96,12 +95,24 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
+        android:contentDescription="Controlar linterna"
         app:layout_constraintBottom_toBottomOf="@+id/img_ampolleta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/img_ampolleta"
         app:layout_constraintTop_toTopOf="@+id/img_ampolleta"
-        app:srcCompat="@drawable/linterna_off"
-        android:contentDescription="Controlar linterna" />
+        app:srcCompat="@drawable/linterna_off" />
+
+    <Button
+        android:id="@+id/btnVolverPrincipalSensores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:text="Volver"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

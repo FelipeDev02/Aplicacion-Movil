@@ -10,6 +10,8 @@ import androidx.core.view.WindowInsetsCompat
 
 private lateinit var btnregistrar: Button
 private lateinit var btnlistar: Button
+private lateinit var btnVolverPrincipal: Button
+
 class crud_usuario : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,6 +25,8 @@ class crud_usuario : AppCompatActivity() {
 
         btnregistrar = findViewById(R.id.btnregistrar)
         btnlistar = findViewById(R.id.btnlistar)
+        // 1. Se enlaza el nuevo botón
+        btnVolverPrincipal = findViewById(R.id.btnVolverPrincipal)
 
         btnregistrar.setOnClickListener {
             val intent = Intent(this, Registrar::class.java)
@@ -31,6 +35,13 @@ class crud_usuario : AppCompatActivity() {
 
         btnlistar.setOnClickListener {
             val intent = Intent(this, Listar::class.java)
+            startActivity(intent)
+        }
+
+        // 2. Se añade la lógica para volver a la pantalla principal
+        btnVolverPrincipal.setOnClickListener {
+            val intent = Intent(this, principal::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }

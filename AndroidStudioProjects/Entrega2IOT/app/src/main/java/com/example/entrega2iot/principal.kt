@@ -8,11 +8,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-
-private lateinit var txtcrud: TextView
-private lateinit var txtsensores: TextView
-
-private lateinit var txtdesarrollo: TextView
+import cn.pedant.SweetAlert.SweetAlertDialog
 
 class principal : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,11 +21,12 @@ class principal : AppCompatActivity() {
             insets
         }
 
-        txtcrud = findViewById( R.id.txtcrudusuarios)
-        txtsensores = findViewById( R.id.txtsensores)
-        txtdesarrollo = findViewById( R.id.txtdesarrollo)
+        val txtcrudusuarios = findViewById<TextView>(R.id.txtcrudusuarios)
+        val txtsensores = findViewById<TextView>(R.id.txtsensores)
+        val txtdesarrollo = findViewById<TextView>(R.id.txtdesarrollo)
+        val btnSalirPrincipal = findViewById<Button>(R.id.btnSalirPrincipal)
 
-        txtcrud.setOnClickListener {
+        txtcrudusuarios.setOnClickListener {
             val intent = Intent(this, crud_usuario::class.java)
             startActivity(intent)
         }
@@ -42,6 +39,23 @@ class principal : AppCompatActivity() {
         txtdesarrollo.setOnClickListener {
             val intent = Intent(this, desarrolladores::class.java)
             startActivity(intent)
+        }
+
+        btnSalirPrincipal.setOnClickListener {
+            SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
+                .setTitleText("¿Estás seguro que deseas cerrar sesión?")
+                .setConfirmText("Sí, salir")
+                .setCancelText("No, cancelar")
+                .setConfirmClickListener { sDialog ->
+                    sDialog.dismissWithAnimation()
+                    val intent = Intent(this, Login::class.java)
+                    intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                    startActivity(intent)
+                }
+                .setCancelClickListener { sDialog ->
+                    sDialog.dismissWithAnimation()
+                }
+                .show()
         }
     }
 }
