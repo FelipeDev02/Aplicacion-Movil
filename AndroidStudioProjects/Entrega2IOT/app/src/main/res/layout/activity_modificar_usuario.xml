@@ -5,12 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="24dp"
+    android:background="@color/beige"
     tools:context=".ModificarUsuario">
 
     <TextView
         android:id="@+id/tvTituloModificar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
         android:text="Editar Usuario"
         android:textSize="22sp"
         android:textStyle="bold"

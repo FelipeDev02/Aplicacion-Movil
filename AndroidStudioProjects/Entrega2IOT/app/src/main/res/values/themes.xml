@@ -1,7 +1,13 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.Entrega2IOT" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
+        <!-- Se fuerza el color de texto primario a negro -->
+        <item name="android:textColorPrimary">@android:color/black</item>
+        <item name="android:textColor">@android:color/black</item>
+        
+        <!-- Se define un color más oscuro para los hints -->
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
