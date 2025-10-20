@@ -28,5 +28,10 @@ class crud_usuario : AppCompatActivity() {
             val intent = Intent(this, Registrar::class.java)
             startActivity(intent)
         }
+
+        btnlistar.setOnClickListener {
+            val intent = Intent(this, Listar::class.java)
+            startActivity(intent)
+        }
     }
 }

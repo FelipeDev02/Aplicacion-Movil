@@ -10,7 +10,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import cn.pedant.SweetAlert.SweetAlertDialog
 
-// 1. Variables declaradas fuera de la clase (como en tu código original)
 private lateinit var btn1: Button
 private lateinit var btn2: Button
 private lateinit var btn3: Button
@@ -62,8 +61,6 @@ class SwitchAlert : AppCompatActivity() {
         }
 
     }
-
-    // 2. Funciones movidas FUERA de onCreate, pero DENTRO de la clase
 
     private fun mostrarAdvertencia() {
         SweetAlertDialog(this, SweetAlertDialog.WARNING_TYPE)
